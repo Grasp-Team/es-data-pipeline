@@ -34,10 +34,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # elastic search stuff:
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 # gem 'elasticsearch'
 # gem 'elasticsearch-api'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+# for db stuff
+require 'json'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

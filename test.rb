@@ -1,13 +1,17 @@
 require 'elasticsearch'
 
-client = Elasticsearch::Client.new log: true
+#whole file is gucci, this is if we don't wanna use rails to index stuff:
 
-client.index(index: 'myindex',
-              type: 'mytype',
+client = Elasticsearch::Client.new(log: true, host: ENV['SEARCHBOX_SSL_URL'])
+
+# works:
+client.index(index: 'tutors',
+              type: 'Tutor',
                 id: 1,
-              body: { title: 'Test', content: 'blah blah'})
-# => {"_index"=>"myindex", ... "created"=>true}
+              body: { uuid: 'Test', first_name: 'testjeet'})
 
-client.search index: 'myindex', body: { query: { match: { title: 'test' } } }
-# => {"took"=>2, ..., "hits"=>{"total":5, ...}}
-client.search index: 'myindex', body: { query: { match: { content: 'blah' } } }
+# return all:
+client.search( index: 'tutors', body: { query: {  } } )
+
+# specific:
+client.search( index: 'tutors', body: { query: { match: { first_name: 'lol' } } } )

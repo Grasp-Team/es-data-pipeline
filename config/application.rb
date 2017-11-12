@@ -6,7 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_SSL_URL']
+Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_SSL_URL']
+# Elasticsearch::Model.client = Elasticsearch::Client.new(log: true, host: ENV['SEARCHBOX_SSL_URL'])
 
 module GraspSearchEngine
   class Application < Rails::Application
