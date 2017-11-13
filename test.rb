@@ -12,6 +12,7 @@ client.index(index: 'tutors',
 
 # return all:
 client.search( index: 'tutors', body: { query: {  } } )
+Elasticsearch::Model.client.search( index: 'tutors', body: { query: {  } } )
 
 # specific:
 client.search( index: 'tutors', body: { query: { match: { first_name: 'lol' } } } )
